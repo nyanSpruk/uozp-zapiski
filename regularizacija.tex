@@ -1,4 +1,4 @@
-\chapter{Merjenje napovedne točnosti in regularizacija}
+\chapter{Regularizacija}
 
 Pri vpeljavi linearne regresije v prejšnjem poglavju je bil cilj
 gradnja modela, ki se čimbolj prilega učni množici. Pa je to res pravi
@@ -53,7 +53,7 @@ Z dviganjem stopnje polinoma se naš model čedalje bolj prilega učnim podatkom
 
 Navidezno smo problem iskanja modela, ki bi minimiziral kriterijsko fukcijo,  uvedbo polinomske regresije rešili. Pa smo res? Spomnimo se, da je naš cilj gradnje modelov napovedovanje, torej ne samo modeliranje na osnovi učne množice, ampak uporaba modela za napovedovanje primerov, ki jih pri učenju nismo videli in ki so novi. Uporabo polinomske regresije moramo zato preskusiti na tovrstnih primerih, ki jim pravimo tudi testna množica. Pred tem pa se moramo dogovoriti, kako bomo merili uspešnost modela oziroma njegovo napovedno točnost.
 
-\section{Mere napovedne točnosti}
+\section{Napovedna točnost}
 
 Imejmo testno množico $\cal{T}$ s $k$ primeri, $k=|\cal{T}|$, za katere poznamo njihov atributni opis $x^{(i)}$ in vemo njihov pravi razred $y^{(i)}$. Oceniti želimo napovedno točnost regresijskega modela, ki za $i$-ti primer napove oziroma oceni vrednost njegovega razreda kot $\hat{y}^{(i)}$.
 
@@ -107,7 +107,7 @@ Rezultate kaže tabela~\ref{tab:poly-reg-many-res}. S stopnjo polinomske razšir
   \label{tab:poly-reg-many-res}
 \end{table}
 
-\section{Regularizacija}
+\section{Regularizacija linearne regresije}
 
 Ko višamo stopnjo polinomske razširitve atributnega prostora smo opazili (slika~\ref{fig:poly-linear-fit7}), da parametri modela podivjajo, oziroma postane njihova vrednost zelo visoka. Kar ni nič čudnega, saj se model zelo prilagodi učnim podatkom, funkcija odvisnosti med $x$ in $y$ je zelo razgibana, njeni odvodi pa zelo visoki. Prileganje učni množici se torej izrazi v absolutno velikih vrednostih parametrov modela (absolutno zato, ker so te vrednosti lahko visoke a negativne ali visoke in pozitivne). Želeli bi si manj ``divje'' modele, torej take, kjer bi bili parametri modela po absolutni meri manjši. To željo enostavno izrazimo kot dodatek h kriterijiski funkciji za linearno regresijo:
 
