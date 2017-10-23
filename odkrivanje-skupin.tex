@@ -95,16 +95,16 @@ Zanimale nas bodo tudi hierarhije skupin, kjer velja $C_i\cap
 C_j\in\{C_i,C_j,\emptyset\}$.  Presek dveh skupin je lahko samo prazna
 množica, ali pa v celoti ena od skupin. Pri nepraznem preseku to
 pomeni, da je ena od skupin v celoti vsebovana v drugi. Tako lastnost
-bodo imele skupine v pri hierarhičnem razvrščanju.
+bodo imele skupine pri hierarhičnem razvrščanju.
 
-Vsak primer tabeli~\ref{t-eksterci} je opisan z $n$ atributi
+Vsak primer v tabeli~\ref{t-eksterci} je opisan z $n$ atributi
 (številskimi spremenljivkami). Primer $x$ zapišemo kot:
 %
 $$ x=(x_1,x_2, \ldots, x_n)^T $$ 
 %
 Tu smo zaradi poenostavitve namenoma izpustili indeks primera. Primer
 $x^{(i)}$ smo tako označili s simbolom $x$. Ker je vsak primer vektor,
-bi temo primerno morali izpisati tudi oznako, torej kot $\bf x$, a
+bi temu primerno morali izpisati tudi oznako, torej kot $\bf x$, a
 bomo tudi poenostavili in primer označili kar z $x$.
 
 Primer smo zapisali kot stolpični vektor, v tabeli s primeri pa je
@@ -160,7 +160,7 @@ podobno. A za naš primer so zgornje definicije dovolj.
 
 Z izbrano mero različnosti lahko izmerimo razdalje med vsemi
 pari primerov. Te potem lahko vizualiziramo s toplotno karto
-(\angl{heatmap}), kot to prikazuje slika~\ref{f-toplotna-karta}. Če
+\angl{heatmap}, kot to prikazuje slika~\ref{f-toplotna-karta}. Če
 ``močne'' skupine obstajajo, in če smo primere na toplotni karti
 pravilno uredili (kako?), bi se na karti morali prikazati vzorci, ki
 nakazujejo skupine (kakšni?).
@@ -186,11 +186,11 @@ C_v=\emptyset$. Uvedimo nekaj možnih razdalj:
 \item Razdalja med skupinama $C_u$ in $C_v$ je razdalja med njunima
   najbližjima primeroma $a\in C_u$ in $b\in C_v$ \angl{single
     linkage}:
-$$d_{\rm min}(C_u, C_v)=\min_{a,b}\{d(a,b)\ |\ a\in C_i, y\in C_j\}$$
+$$d_{\rm min}(C_u, C_v)=\min_{a,b}\{d(a,b)\ |\ a\in C_u, b\in C_v\}$$
 \item Razdalja med skupinama $C_u$ in $C_v$ je razdalja med njunima
   najbolj oddaljenima primeroma $a\in C_u$ in $b\in C_v$
   \angl{complete linkage}:
-$$d(C_{\rm max}, C_v)=\max_{a,b}\{d(a,b)\ |\ a\in C_i, b\in C_j\}$$
+$$d_{\rm max}(C_u, C_v)=\max_{a,b}\{d(a,b)\ |\ a\in C_u, b\in C_v\}$$
 \item Razdalja med skupinama $C_u$ in $C_v$ je povprečna razdalja med
   vsemi pari primerov iz teh dveh skupin \angl{average linkage}, torej:
 $$d(C_u, C_v)={\sum_{a\in C_u}\sum_{b\in C_v}  \frac{d(a,b)}{|C_a||C_b|}} $$
@@ -212,7 +212,7 @@ imenuje hierarhično razvrščanje v skupine.
 
 \subsection{Algoritem}
 
-Hierarhično razvrščanje v skupinenajlažje opišemo kar s psevdokodo:
+Hierarhično razvrščanje v skupine najlažje opišemo kar s psevdokodo:
 \begin{itemize}
 \item vsak primer naj tvori svojo skupino, $C_i=\{x^{(i)}\}$,
   $x^{(i)}\in\mathcal{U}$
@@ -385,7 +385,7 @@ da jih sploh ni.
 
 Metoda hierarhičnega gručenja ima pravzaprav dva parametra: prvi je metoda merjenja razdalj med primeri, drugi pa način določanja razdalj med skupinami. Ko imamo podatke predstavljene atributno, torej v tabeli, kjer je vsak primer predstavljen z vektorjem atributnih vrednosti, je evklidska razdalja čisto primerna mera. Če atributi izvirajo na primer iz tekstovnih podatkov in je teh veliko, se izkaže, da je pomembna ne toliko velikost posameznega vektorja kot njegova smer. Prava razdalja za take podatke je tako imenovana kosinusna razdalja. O uporabi te več v naslednjih poglavjih. Na področju biomedicine, kjer so atributi istega tipa in je bolj kot njihova vrednost pomemben vrstni red (tipa: kateri atribut je zavzel največjo vrednost, drugo največjo, ipd.) je mnogokrat uporabljana razdalja Spearmanova korelacija, ki jo izračunamo na rangi. V tem odstavku nam ni namen formalno uvesti vse te različne mere, ampak samo poudariti, da je izbor mere razdalje med primeri odvisen od problemske domene in jo določimo skladno z vedenjem oziroma intuicijo o tem, kaj res najbolj primerno določa razdaljo med primeri.
 
-Malce drugače je z izborom pristopov merjenja razdalje med skupinami. Kot smo že zapisali, ti pristopi (npr. {\em single linkage}, {\em complete linkage}) agregirajo pare razdalj med primeri v dveh različnih skupinah. V splošnem, če ne poznamo podatkov ali pa njihovih projekcij v nižje dimenzije, bo primerna izbira povprečne razdalje \angl{average linkage}, mnogokrat pa presenetljivo dobro deluje Wardova razdalja. Po drugi strani je pristop z minimalno razdaljo \angl.{single linkage} v splošnem neuporaben, razen za res posebne primere (slika~\ref{f-single-linkage}).
+Malce drugače je z izborom pristopov merjenja razdalje med skupinami. Kot smo že zapisali, ti pristopi (npr. {\em single linkage}, {\em complete linkage}) agregirajo pare razdalj med primeri v dveh različnih skupinah. V splošnem, če ne poznamo podatkov ali pa njihovih projekcij v nižje dimenzije, bo primerna izbira povprečne razdalje \angl{average linkage}, mnogokrat pa presenetljivo dobro deluje Wardova razdalja. Po drugi strani je pristop z minimalno razdaljo \angl{single linkage} v splošnem neuporaben, razen za res posebne primere (slika~\ref{f-single-linkage}).
 
 \begin{figure}[htbp]
 \begin{center}
