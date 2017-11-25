@@ -136,22 +136,22 @@ različni. Če razmišljamo samo o prvem, potem želimo, da metoda
 voditeljev poišče tako razbitje, kjer bo vsota oddaljenosti od
 pripadajočih voditeljev oziroma spodnji izraz čim manjši:
 %
-$$ \sum_{i=1}^K \sum_{x\in Ci} d(m^{(i)}, x) $$
+$$ \sum_{i=1}^K \sum_{x\in Ci} d(v^{(i)}, x) $$
 %
 Predpostavimo, da se naši primeri nahajajo v evklidski ravnini in da imamo opravka s podatki z enim samim atributom. Razdaljo med točkami bomo merili z evklidsko razdaljo. Zgornji izraz se prevede v vsoto kvadratnih napak \angl{sum of squared errors, SSE} oziroma odstopanj od centroidov:
 %
-$$SSE = \sum_{i=1}^K \sum_{x\in Ci}(m^{(i)}-x)^2$$
+$$SSE = \sum_{i=1}^K \sum_{x\in Ci}(v^{(i)}-x)^2$$
 %
 Iščemo take centroide $C_k$, kjer je ta napaka najmanjša:
 \begin{eqnarray}
-\pd{}{m^{(k)}} & = & \pd{}{m^{(k)}}\sum_{i=1}^K\sum_{x\in C_i}(m^{(i)}-x)^2  \\
-& = & \sum_{i=1}^K\sum_{x\in C_i} \pd{}{m^{(k)}}(m^{(i)}-x)^2 \\
-& = & \sum_{x\in C_k} 2 (m^{(k)}-x)
+\pd{}{v^{(k)}} & = & \pd{}{v^{(k)}}\sum_{i=1}^K\sum_{x\in C_i}(v^{(i)}-x)^2  \\
+& = & \sum_{i=1}^K\sum_{x\in C_i} \pd{}{v^{(k)}}(v^{(i)}-x)^2 \\
+& = & \sum_{x\in C_k} 2 (v^{(k)}-x)
 \end{eqnarray}
 %
 \begin{equation}
-\sum_{x\in C_k} 2 (m^{(k)}-x) = 0 \ \Rightarrow \ |C_k|\ m^{(k)} = \sum_{x\in C_k}
-  x \ \Rightarrow \ m^{(k)} = {1 \over |C_k|} \sum_{x\in C_k}x
+\sum_{x\in C_k} 2 (v^{(k)}-x) = 0 \ \Rightarrow \ |C_k|\ v^{(k)} = \sum_{x\in C_k}
+  x \ \Rightarrow \ v^{(k)} = {1 \over |C_k|} \sum_{x\in C_k}x
 \end{equation}
 %
 kjer je $|C_k|$ število primerov v skupini $C_k$. Najboljši centroidi,
