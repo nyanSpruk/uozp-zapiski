@@ -51,7 +51,7 @@ Z dviganjem stopnje polinoma se naš model čedalje bolj prilega učnim podatkom
 \end{center}
 \end{figure}
 
-Navidezno smo problem iskanja modela, ki bi minimiziral kriterijsko fukcijo,  uvedbo polinomske regresije rešili. Pa smo res? Spomnimo se, da je naš cilj gradnje modelov napovedovanje, torej ne samo modeliranje na osnovi učne množice, ampak uporaba modela za napovedovanje primerov, ki jih pri učenju nismo videli in ki so novi. Uporabo polinomske regresije moramo zato preskusiti na tovrstnih primerih, ki jim pravimo tudi testna množica. Pred tem pa se moramo dogovoriti, kako bomo merili uspešnost modela oziroma njegovo napovedno točnost.
+Navidezno smo problem iskanja modela, ki bi minimiziral kriterijsko fukcijo, z uvedbo polinomske regresije rešili. Pa smo res? Spomnimo se, da je naš cilj gradnje modelov napovedovanje, torej ne samo modeliranje na osnovi učne množice, ampak uporaba modela za napovedovanje primerov, ki jih pri učenju nismo videli in ki so novi. Uporabo polinomske regresije moramo zato preskusiti na tovrstnih primerih, ki jim pravimo tudi testna množica. Pred tem pa se moramo dogovoriti, kako bomo merili uspešnost modela oziroma njegovo napovedno točnost.
 
 \section{Napovedna točnost}
 
@@ -72,7 +72,7 @@ Ocena $R^2$ bo takrat šla proti 0. Delež razložene variance ima zato pričako
 
 \section{Ocenjevanje napovedne točnosti}
 
-Naredimo eksperiment: učni množico, ki jo prikazuje slika~\ref{fig:poly-reg-many}, naključno razdelimo na polovico, kjer uporabimo polovico naključno izbrani primerov za učenje linearnega modela, na drugi polovici modela pa testiramo napovedno uspešnost. Za ocenjevanje točnosti smo uporabili $R^2$, in to merili na učni in testni množici.
+Naredimo eksperiment: učno množico, ki jo prikazuje slika~\ref{fig:poly-reg-many}, naključno razdelimo na polovico, kjer uporabimo polovico naključno izbranih primerov za učenje linearnega modela, na drugi polovici modela pa testiramo napovedno uspešnost. Za ocenjevanje točnosti smo uporabili $R^2$, in to merili na učni in testni množici.
 
 \begin{figure}[htbp]
 \begin{center}
