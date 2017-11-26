@@ -91,7 +91,7 @@ Za vsako točko v grafu, vsak znan podatek, torej za vsak par vrednosti
 $(x^{(i)},y^{(i)})$ lahko izračunamo napako, ki jo dobimo, ko vrednost odvisne
 spremenljivke $y$ napovemo z modelom. Napoved označimo z $\hat{y}$ in
 za primer $i$ izračunamo napako napovedi
-$\epsilon^{(i)}=\hat{y}^{(i)}-y^{(i)}=f(x)-y^{(i)}$. Vse napake za naš dani model in
+$\epsilon^{(i)}=\hat{y}^{(i)}-y^{(i)}=f(x^{(i)})-y^{(i)}$. Vse napake za naš dani model in
 primere v učni množici smo označili na sliki~\ref{f:fiz-kem-eps}.
 
 \begin{figure}[htbp]
@@ -112,7 +112,7 @@ kvantificiramo, oziroma izrazimo numerično s funkcijo:
 
 \begin{equation}
 J = {1\over 2m}\sum_{i=1}^m {\epsilon^{(i)}}^2 = {1\over 2m}\sum_{i=1}^m
-(\hat{y}^{(i)}-y^{(i)})^2 = {1\over 2m}\sum_{i=1}^m (f(y^{(i)})-y^{(i)})^2
+(\hat{y}^{(i)}-y^{(i)})^2 = {1\over 2m}\sum_{i=1}^m (f(x^{(i)})-y^{(i)})^2
 \label{eq:jab}
 \end{equation}
 
@@ -214,7 +214,7 @@ for _ in range(10):
 \end{python}
 
 Tokrat smo se odločili, da naše iskanje optimalne vrednosti $a^*$
-pričnemo pri $a=8$ in da je $\alpha=2$. Za funkcijo
+pričnemo pri $a=8$ in da je $\alpha=0.2$. Za funkcijo
 
 \begin{python}
 def J(a):
