@@ -91,7 +91,7 @@ Za vsako točko v grafu, vsak znan podatek, torej za vsak par vrednosti
 $(x^{(i)},y^{(i)})$ lahko izračunamo napako, ki jo dobimo, ko vrednost odvisne
 spremenljivke $y$ napovemo z modelom. Napoved označimo z $\hat{y}$ in
 za primer $i$ izračunamo napako napovedi
-$\epsilon^{(i)}=\hat{y}^{(i)}-y^{(i)}=f(x)-y^{(i)}$. Vse napake za naš dani model in
+$\epsilon^{(i)}=\hat{y}^{(i)}-y^{(i)}=f(x^{(i)})-y^{(i)}$. Vse napake za naš dani model in
 primere v učni množici smo označili na sliki~\ref{f:fiz-kem-eps}.
 
 \begin{figure}[htbp]
@@ -112,7 +112,7 @@ kvantificiramo, oziroma izrazimo numerično s funkcijo:
 
 \begin{equation}
 J = {1\over 2m}\sum_{i=1}^m {\epsilon^{(i)}}^2 = {1\over 2m}\sum_{i=1}^m
-(\hat{y}^{(i)}-y^{(i)})^2 = {1\over 2m}\sum_{i=1}^m (f(y^{(i)})-y^{(i)})^2
+(\hat{y}^{(i)}-y^{(i)})^2 = {1\over 2m}\sum_{i=1}^m (f(x^{(i)})-y^{(i)})^2
 \label{eq:jab}
 \end{equation}
 
@@ -148,7 +148,7 @@ zgradili model, ki iz znanih ocen fizike in kemije pridobi
 model. Model bo tak, da bo za učno množico, torej za učence, kjer
 poznamo ocene iz obeh predmetov, iz ocene fizike izračunal oceno
 kemije. Želeli bi tak model, ki je na učni množici čimbolj
-natančen. Natančnost ocenimo z kriterijsko funkcijo $J$, katere
+natančen. Natančnost ocenimo s kriterijsko funkcijo $J$, katere
 vrednost izračunamo iz učnih podatkov in modela. Kriterijska funkcija
 je funkcija parametrov modela. Ker gradimo linearni model in ker je
 naš model premica v ravnini, sta parametra dva, $a$ in $b$. Želeli bi
@@ -160,7 +160,7 @@ funkcije najmanjša. Iskanju takih parametrov pravimo optimizacija.
 Tu se bomo delali, da o optimizaciji še nimamo pojma. (Čeprav to prav
 gotovo ni res, saj smo pri matematiki in nekaterih ostalih predmetih
 veliko slišali o njej. A nič hudega, da zadevo ponovimo). Recimo da
-imamo funkcijo $J(a)$, torej funkcijo parametra a, in želimo poiskati
+imamo funkcijo $J(a)$, torej funkcijo parametra $a$, in želimo poiskati
 vrednost parametra $a^*$, kjer je vrednost funkcije najmanjša. Dodatno
 recimo, da vemo, da je funkcija konveksna. Za konveksne funkcije
 velja, da so zvezne in da za vsak interval njene domene (vrednosti
@@ -214,7 +214,7 @@ for _ in range(10):
 \end{python}
 
 Tokrat smo se odločili, da naše iskanje optimalne vrednosti $a^*$
-pričnemo pri $a=8$ in da je $\alpha=2$. Za funkcijo
+pričnemo pri $a=8$ in da je $\alpha=0.2$. Za funkcijo
 
 \begin{python}
 def J(a):
@@ -356,7 +356,7 @@ pa je prikazan na sliki~\ref{f:fiz-kem-opt-model}.
 
 Približek ocene za kemijo izračunan iz ocene za fiziko je sicer čisto
 v redu, a našo razredničarko in matematičarko mučijo ostale
-ocene. Namreč, zgubila se je ocene za kemijo, vse ostale ocene pa
+ocene. Namreč, zgubila se je ocena za kemijo, vse ostale ocene pa
 imamo. Ne samo za fiziko, ampak za slovenščino, matematiko, in
 ostale. Bi lahko zgradili linearni model, ki bi upošteval tudi ostale
 ocene? Torej, upošteval prav vse ostale atribute, ki so nam na
@@ -381,7 +381,7 @@ oziroma v vektorski obliki
 h(x)=\theta^T x
 \end{equation}
 
-Parametre modela $\theta$ želimo izbrati tako, da bo napaka naše napovedi čim manjša. Napaka napovedi za $i$-ti primer, kjer je $\hat{y^{(i)}}$ napovedana vrednost, $y^{(i)}$ pa prava vrednost odvisne spremenljivke, je
+Parametre modela $\theta$ želimo izbrati tako, da bo napaka naše napovedi čim manjša. Napaka napovedi za $i$-ti primer, kjer je $\hat{y}^{(i)}$ napovedana vrednost, $y^{(i)}$ pa prava vrednost odvisne spremenljivke, je
 %
 \begin{equation}
 \epsilon^{(i)}=\hat{y}^{(i)}-y^{(i)}=h_\theta(x^{(i)})-y^{(i)}
@@ -407,12 +407,12 @@ J(\theta)={1\over 2m}\sum_{i=0}^m(h_\theta(x^{(i)})-y^{(i)})^2
 Naš cilj je sedaj poiskati take vrednosti parameterov, pri katerih bo
 kriterijska funkcija $J(\theta)$ minimalna, oziroma take vrednosti,
 pri katerem se bo glede na našo izbrano kriterijsko funkcijo naš
-modelov čim bolje prilegal dani učni množici. 
+model čim bolje prilegal dani učni množici. 
 
 \section{Metoda najhitrejšega spusta}
 
 Iskanje optimalnih parametrov začnimo v neki točki, na primer kar v
-$\theta=\vec{0}$. Potem spreminjamo $\theta$ tako, da se $J(theta)$
+$\theta=\vec{0}$. Potem spreminjamo $\theta$ tako, da se $J(\theta)$
 zmanšuje, to je, v nasprotni smeri parcialnega odvoda kriterijske
 funkcije. Enako, kot smo počeli v prejšnjem poglavju z parametroma $a$
 in $b$, le da tokrat ta korak zapišemo splošno za parameter $\theta_i$:
@@ -422,11 +422,11 @@ in $b$, le da tokrat ta korak zapišemo splošno za parameter $\theta_i$:
 %
 Konstanto $\alpha$ imenujemo stopnja učenja, njena vrednost pa bo
 narekovala, kako hitro bomo hiteli proti cilju. Če bo vrednost
-$\alpha$ prevelika, je možno, da bo preleteli cilj in se odstrelili v
+$\alpha$ prevelika, je možno, da bomo preleteli cilj in se odstrelili v
 neskončnost. Če bo vrednost premajhna, bo konvergenca počasna.
 
 Izpeljimo sedaj vrednost parcialnih odvodov oziroma vrednost
-gradienta, ko parcialne odvode zložimo v vektor. Pri tem zaenkrat privzemimo, da bomo vrednosti parametra $\theta_i$ prilagodili enem samem primeru $(x,y)$:
+gradienta, ko parcialne odvode zložimo v vektor. Pri tem zaenkrat privzemimo, da bomo vrednosti parametra $\theta_i$ prilagodili enemu samemu primeru $(x,y)$:
 %
 \begin{eqnarray}
 {\partial\over\partial\theta_i} J(\theta) & = & {\partial\over\partial\theta_i} {1\over 2m}(h_\theta(x)-y)^2 \\

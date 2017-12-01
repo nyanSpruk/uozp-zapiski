@@ -60,7 +60,7 @@ besedilo\footnote{Glej
   \url{www.lingua-systems.com/language-identifier/lid-library/identify-language.html}}. Za
 bolj zahtevne naloge je potrebno seveda uporabiti daljše $k$-terke.
 
-Te predstavitev je načelno enostavna, a jo precej oteži uporaba
+Ta predstavitev je načelno enostavna, a jo precej oteži uporaba
 posebnih znakov, ki jih moramo ali upoštevati ali pa primerno
 predobdelati besedilo.
 
@@ -85,10 +85,10 @@ lahko besedilo najprej predobdelamo:
 Predstavitev z vrečo besed zanemarja dejstvo, da je pomen besed
 mnogokrat odvisen od konteksta. Ista beseda ima lahko različne pomene,
 ali pa imajo isti pomen lahko različne besede. Prav tako nam taka
-predstavitev ne bo mogla razrešiti problem podpomenk in drugačnih
+predstavitev ne bo mogla razrešiti problema podpomenk in drugačnih
 povezav med različnimi izrazi.
 
-Število pojavitev besed v dokumentu je seveda odvisna od dolžine
+Število pojavitev besed v dokumentu je seveda odvisno od dolžine
 dokumenta. Da ta vpliv izničimo, namesto števila pojavitev besed
 uporabljamo relativno frekvenco, to je verjetnost, da bi pri
 naključnem izboru besede iz dokumenta izbrali določeno besedo.
@@ -165,7 +165,7 @@ WordNet~\footnote{WordNet je prosto dostopen na naslovu
   \url{http://wordnetweb.princeton.edu}.}. Odlična vizualizacija
 povezav med besedami, kjer je prikazan tudi pomen povezav, je dostopna
 na spletni strani Visuwords \footnote{\url{http://www.visuwords.com/}}
-(slika f-visuwords). Enostavnejša oblika zapisa take taksonomije je
+(slika \ref{f-visuwords}). Enostavnejša oblika zapisa take taksonomije je
 slovar sopomenk ali tezaver \footnote{Glej
   npr. \url{http://www.tezaver.si/}.}.
 
@@ -244,7 +244,7 @@ jo uporabljamo kot splošno mero za pomembnost določenega elementa:
 $$\mathrm{idf}(t) =  \log \frac{|D|}{|\{d: t \in d\}|}$$
 kjer je $|D|$ število dokumentov v množici dokumentov $D$ in $|\{d : t
 \in d\}|$ število dokumentov, ki vsebujejo element $t$ (torej, kjer je
-$\mathrm{tf}(t,d) \neq 0$). Če elemente ni v korpusu, bi zgornje
+$\mathrm{tf}(t,d) \neq 0$). Če elementa ni v korpusu, bi zgornje
 vodilo k deljenju z 0. Zato lahko zgornji izraz prilagodimo in
 zapišemo $1 + |\{d : t \in d\}|$.
 
