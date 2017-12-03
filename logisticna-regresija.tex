@@ -67,10 +67,10 @@ Logistična funkcija je zvezna, monotona, z $z\to -\infty$ konvergira proti 0 in
 
 Zapišimo sedaj naš klasifikacijski model. V osnovi bo to linearni model, torej utežena vsota vrednosti atributov. A tokrat jo bomo, zato, da bo vrednost modela izražala pripadnost (verjetnost) ciljnemu razredu, transformirali z logistično funkcijo:
 \begin{eqnarray}
-  h_\Theta(x) & = & g(\theta_0+\theta_1 x_1+\theta_2 x_2+\ldots\theta_n x_n)
+  h_\theta(x) & = & g(\theta_0+\theta_1 x_1+\theta_2 x_2+\ldots\theta_n x_n)
   \nonumber \\
-  & = & g(\Theta^T x) \nonumber \\
-  & = & \frac{1}{1+e^{-\Theta^T x}}
+  & = & g(\theta^T x) \nonumber \\
+  & = & \frac{1}{1+e^{-\theta^T x}}
   \label{eq:logreg}
 \end{eqnarray}
 
@@ -78,62 +78,62 @@ Model zaradi uporabe logistične funkcije imenujemo {\em logistična regresija}.
 
 \section{Računanje verjetnosti razreda}
 
-V nadaljevanju bomo torej logistično funkcijo uporabili tako, da nam bo naš model $h_{\Theta}(0)$, ki je v osnovi linearni model, vračal vrednosti med 0 in 1. Še naprej bomo predpostavljali, da je naša razredna spremenljivka dvovrednostna, a privzeli, da je njena ciljna vrednost razred z oznako $y=1$ in da zanj model $h_{\Theta}(x)$ vrača verjetnost tega razreda. K oznaki modela smo namenoma pripisali oznako za vektor parametrov $\Theta$ in na ta način poudarili, da ti parametri tudi polno opredelijo naš model. Zapišemo torej lahko:
+V nadaljevanju bomo torej logistično funkcijo uporabili tako, da nam bo naš model $h_{\theta}(0)$, ki je v osnovi linearni model, vračal vrednosti med 0 in 1. Še naprej bomo predpostavljali, da je naša razredna spremenljivka dvovrednostna, a privzeli, da je njena ciljna vrednost razred z oznako $y=1$ in da zanj model $h_{\theta}(x)$ vrača verjetnost tega razreda. K oznaki modela smo namenoma pripisali oznako za vektor parametrov $\theta$ in na ta način poudarili, da ti parametri tudi polno opredelijo naš model. Zapišemo torej lahko:
 \begin{eqnarray}
-  P(y=1|x;\Theta) & = & h_\Theta(x) \\
-  P(y=0|x;\Theta) & = & 1-h_\Theta(x)
+  P(y=1|x;\theta) & = & h_\theta(x) \\
+  P(y=0|x;\theta) & = & 1-h_\theta(x)
 \end{eqnarray}
-Izraz za $P(y=1|x;\Theta)$ nam torej podaja verjetnost, da je razred primera, ki je opisan z vektorjem atributnih vrednosti $x$, enak 1. Oziroma podaja verjetnost, da neodvisna spremenljivka zavzame vrednost 1 pri opisu primera $x$ in parametrizaciji modela s parametri $\Theta$. En sam izraz, ki združi zgornji enačbi v eno in ki podaja verjetnostno porazdelitev za spremenljivko $y$ je:
+Izraz za $P(y=1|x;\theta)$ nam torej podaja verjetnost, da je razred primera, ki je opisan z vektorjem atributnih vrednosti $x$, enak 1. Oziroma podaja verjetnost, da neodvisna spremenljivka zavzame vrednost 1 pri opisu primera $x$ in parametrizaciji modela s parametri $\theta$. En sam izraz, ki združi zgornji enačbi v eno in ki podaja verjetnostno porazdelitev za spremenljivko $y$ je:
 \begin{equation}
-  p(y|x;\Theta) = (h_\Theta(x))^y(1-h_\Theta(x))^{1-y}
+  p(y|x;\theta) = (h_\theta(x))^y(1-h_\theta(x))^{1-y}
 \label{eq:log-prob}
 \end{equation}
 Pravilnost zgornjega izraza preveri tako, da za vrednost spremenljivke $y$ vstaviš enkrat $y=1$ in drugič $y=0$.
 
 \section{Verjetje}
 
-Izraz za $p(y|x;\Theta)$ v enačbi~\ref{eq:log-prob} torej podaja verjetnost za določeno vrednost neodvisne spremenljivke in določen vektor atributnih vrednosti pri modelu, ki je podan z $\Theta$. Sedaj pa si predstavljamo, da vrednosti elementov vektorja $\Theta$ spreminjamo. Prav gotovo se bo na ta način tudi spreminjala verjetnost za dani razred pri izbranem primeru; enkrat bo ta verjetnost višja, drugič nižja.
+Izraz za $p(y|x;\theta)$ v enačbi~\ref{eq:log-prob} torej podaja verjetnost za določeno vrednost neodvisne spremenljivke in določen vektor atributnih vrednosti pri modelu, ki je podan z $\theta$. Sedaj pa si predstavljamo, da vrednosti elementov vektorja $\theta$ spreminjamo. Prav gotovo se bo na ta način tudi spreminjala verjetnost za dani razred pri izbranem primeru; enkrat bo ta verjetnost višja, drugič nižja.
 
-Zamrznimo sedaj parametre modela $\Theta$ in izračunajmo verjetnosti $L(\Theta)$ pravih razredov $\vec{y}$ za primere v učni množici, ki jo opišemo z matriko atributnih vrednosti $X$. Predpostavljamo, da so primeri iz učne množice neodvisni in da zato verjetnost za vrednosti spremenljivke $y$ za celotno učno množico lahko zapišemo kot produkt verjetnosti za vrednost $y$ za posamezne primere:
+Zamrznimo sedaj parametre modela $\theta$ in izračunajmo verjetnosti $L(\theta)$ pravih razredov $\vec{y}$ za primere v učni množici, ki jo opišemo z matriko atributnih vrednosti $X$. Predpostavljamo, da so primeri iz učne množice neodvisni in da zato verjetnost za vrednosti spremenljivke $y$ za celotno učno množico lahko zapišemo kot produkt verjetnosti za vrednost $y$ za posamezne primere:
 \begin{eqnarray}
-  L(\Theta) & = & p(\vec{y}|X;\Theta) \nonumber\\
-  & = & \prod_{i=1}^m p(y^{(i)}|x^{(i)};\Theta) \nonumber\\
-  & = & \prod_{i=1}^m h_\Theta(x^{(i)})^{y^{(i)}}(1-h_\Theta(x^{(i)}))^{1-y^{(i)}}
+  L(\theta) & = & p(\vec{y}|X;\theta) \nonumber\\
+  & = & \prod_{i=1}^m p(y^{(i)}|x^{(i)};\theta) \nonumber\\
+  & = & \prod_{i=1}^m h_\theta(x^{(i)})^{y^{(i)}}(1-h_\theta(x^{(i)}))^{1-y^{(i)}}
 \end{eqnarray}
 
-Kot smo označili v zgornji funkciji $L$, je ta verjetnost odvisna od parametrov modela $\Theta$. Kakšen model bi želeli imeti? Tak, pri katerem je verjetnost $L(\Theta)$ največja. Torej tak model, kjer bo verjetnost, da bo model napovedal take vrednosti razredov, kot so v učni množici, največja. $L(\Theta)$ igra vlogo kriterijske funkcije, ki pa jo tokrat maksimiziramo.
+Kot smo označili v zgornji funkciji $L$, je ta verjetnost odvisna od parametrov modela $\theta$. Kakšen model bi želeli imeti? Tak, pri katerem je verjetnost $L(\theta)$ največja. Torej tak model, kjer bo verjetnost, da bo model napovedal take vrednosti razredov, kot so v učni množici, največja. $L(\theta)$ igra vlogo kriterijske funkcije, ki pa jo tokrat maksimiziramo.
 
-Funkcijo $L$ imenujemo {\em verjetje}. Iščemo torej parametre $\Theta$, kjer je njena vrednost največja. Tudi tokrat bomo tako vrednost parametrov iskali z gradientnimi pristopi, za te pa sedaj že vemo, da moramo znati izračunati odvode po posameznih parametrih, oziroma, da moramo znati izračunati gradient kriterijske funkcije. Ker je odvajanje funkcij z mnogo produkti, torej funkcij, kot je naša $L(\Theta)$, precej mučno, se vprašajmo, ali obstaja kakšna preslikava funkcije $L$, za katero bi bilo lažje izračunati odvod in pri kateri bi vrednosti $\Theta$, ki to funkcijo maksimizirajo prav tako maksimizirajo tudi funkcijo $L(\Theta)$. Taka preslikava je logaritemska funkcija, ki je na intervalu od 0 do $\infty$ monotona in bo torej vektor $\Theta$, ki maksimizira $\log(L(\Theta))$ torej tak, da maksimizira tudi $L(\Theta)$. Logaritem $L(\Theta)$ označimo kot $l(\Theta)$ in ga izračunamo kot:
+Funkcijo $L$ imenujemo {\em verjetje}. Iščemo torej parametre $\theta$, kjer je njena vrednost največja. Tudi tokrat bomo tako vrednost parametrov iskali z gradientnimi pristopi, za te pa sedaj že vemo, da moramo znati izračunati odvode po posameznih parametrih, oziroma, da moramo znati izračunati gradient kriterijske funkcije. Ker je odvajanje funkcij z mnogo produkti, torej funkcij, kot je naša $L(\theta)$, precej mučno, se vprašajmo, ali obstaja kakšna preslikava funkcije $L$, za katero bi bilo lažje izračunati odvod in pri kateri bi vrednosti $\theta$, ki to funkcijo maksimizirajo prav tako maksimizirajo tudi funkcijo $L(\theta)$. Taka preslikava je logaritemska funkcija, ki je na intervalu od 0 do $\infty$ monotona in bo torej vektor $\theta$, ki maksimizira $\log(L(\theta))$ torej tak, da maksimizira tudi $L(\theta)$. Logaritem $L(\theta)$ označimo kot $l(\theta)$ in ga izračunamo kot:
 \begin{eqnarray}
-  l(\Theta) & = & \log L(\Theta) \nonumber\\
-  & = & \sum_{i=1}^m\big[y^{(i)}\log h_\Theta(x^{(i)})+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})) \big]
+  l(\theta) & = & \log L(\theta) \nonumber\\
+  & = & \sum_{i=1}^m\big[y^{(i)}\log h_\theta(x^{(i)})+(1-y^{(i)})\log (1-h_\theta(x^{(i)})) \big]
 \end{eqnarray}
 
-Namesto kriterijske funkcije $L(\Theta)$ bomo torej uporabili funkcijo $l(\Theta)$, ki ji pravimo tudi {\em logaritem verjetja} (angl. {\em log likelihood}).
+Namesto kriterijske funkcije $L(\theta)$ bomo torej uporabili funkcijo $l(\theta)$, ki ji pravimo tudi {\em logaritem verjetja} (angl. {\em log likelihood}).
 
 \section{Gradient logaritma verjetja}
 
-Iščemo torej tak $\Theta$, ki maksimizira logaritem verjetja $l(\Theta)$. Ker bomo uporabili gradientno metodo in ker je $\Theta$ vektor $[\theta_0 \theta_1 \ldots \theta_n]$, moramo izračunati parcialne odvode naše kriterijske funkcije:
+Iščemo torej tak $\theta$, ki maksimizira logaritem verjetja $l(\theta)$. Ker bomo uporabili gradientno metodo in ker je $\theta$ vektor $[\theta_0 \theta_1 \ldots \theta_n]$, moramo izračunati parcialne odvode naše kriterijske funkcije:
 \begin{eqnarray}
-  \frac{\partial}{\partial\theta_j}l(\Theta)
-  & = & \sum_{i=1}^m \frac{\partial}{\partial\theta_j} \big[y^{(i)}\log h_\Theta(x^{(i)})+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})) \big] \nonumber \\
-  & = & \sum_{i=1}^m \big[y^{(i)}\frac{1}{g(\Theta^T x^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\Theta^T x^{(i)})} \big]\frac{\partial}{\partial\theta_j}g(\Theta^T x^{(i)}) \nonumber\\
-  & = & \sum_{i=1}^m \big[\frac{y^{(i)}}{g(\Theta^T x^{(i)})}-\frac{(1-y^{(i)})}{1-g(\Theta^T x^{(i)})} \big]g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)}))
-  \frac{\partial}{\partial\theta_j}\Theta^T x^{(i)}\nonumber\\
-  & = & \sum_{i=1}^m \big[\frac{y^{(i)} - g(\Theta^T x^{(i)})} {g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)}))} \big]g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)})) x_j^{(i)}\nonumber\\
-  & = & \sum_{i=1}^m (y^{(i)}-g(\Theta^T x^{(i)}))x_j^{(i)}\nonumber\\
-  & = & \sum_{i=1}^m (y^{(i)}-h_\Theta(x^{(i)}))x_j^{(i)}\nonumber
+  \frac{\partial}{\partial\theta_j}l(\theta)
+  & = & \sum_{i=1}^m \frac{\partial}{\partial\theta_j} \big[y^{(i)}\log h_\theta(x^{(i)})+(1-y^{(i)})\log (1-h_\theta(x^{(i)})) \big] \nonumber \\
+  & = & \sum_{i=1}^m \big[y^{(i)}\frac{1}{g(\theta^T x^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\theta^T x^{(i)})} \big]\frac{\partial}{\partial\theta_j}g(\theta^T x^{(i)}) \nonumber\\
+  & = & \sum_{i=1}^m \big[\frac{y^{(i)}}{g(\theta^T x^{(i)})}-\frac{(1-y^{(i)})}{1-g(\theta^T x^{(i)})} \big]g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)}))
+  \frac{\partial}{\partial\theta_j}\theta^T x^{(i)}\nonumber\\
+  & = & \sum_{i=1}^m \big[\frac{y^{(i)} - g(\theta^T x^{(i)})} {g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)}))} \big]g(\theta^T x^{(i)})(1-g(\theta^T x^{(i)})) x_j^{(i)}\nonumber\\
+  & = & \sum_{i=1}^m (y^{(i)}-g(\theta^T x^{(i)}))x_j^{(i)}\nonumber\\
+  & = & \sum_{i=1}^m (y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}\nonumber
   \label{eq:logreg-grad}
 \end{eqnarray}
-Zelo enostavno! Smo tak rezultat oziroma tako enačbo videli že kje prej? Seveda! Pri linearni regresiji. Parcialni odvodi so identična tem za linearno regresijo. Seveda z majhno razliko. Tokrat naša funkcija $h_\Theta$ uporablja logistično funkcijo (en.~\ref{eq:logreg}), pri linearni regresiji pa je bila $h_\Theta$ samo utežena vsota atributnih vrednosti.
+Zelo enostavno! Smo tak rezultat oziroma tako enačbo videli že kje prej? Seveda! Pri linearni regresiji. Parcialni odvodi so identična tem za linearno regresijo. Seveda z majhno razliko. Tokrat naša funkcija $h_\theta$ uporablja logistično funkcijo (en.~\ref{eq:logreg}), pri linearni regresiji pa je bila $h_\theta$ samo utežena vsota atributnih vrednosti.
 
 \section{Optimizacija parametrov modela}
 
-Postopek iskanja parametrov modela je identičen temu pri linearni regresiji. Seveda, z majhno razliko, da je tokratni model $h_\Theta(x)$ model logistične regresije. Vseeno zapišimo korak za osveževanje vrednosti parametra $\theta_j$:
+Postopek iskanja parametrov modela je identičen temu pri linearni regresiji. Seveda, z majhno razliko, da je tokratni model $h_\theta(x)$ model logistične regresije. Vseeno zapišimo korak za osveževanje vrednosti parametra $\theta_j$:
 \begin{equation}
-  \theta_j\leftarrow\theta_j+\alpha\sum_{i=1}^{m}\big(y^{(i)}-h_\Theta(x^{(i)})\big) x_j^{(i)}
+  \theta_j\leftarrow\theta_j+\alpha\sum_{i=1}^{m}\big(y^{(i)}-h_\theta(x^{(i)})\big) x_j^{(i)}
 \end{equation}
 
 Tudi tokrat je $\alpha$ stopnja učenja, katerega vrednost je pri normaliziranih podatkih tipično majhna (npr. $0.001$).
 
-Tukaj velja opozorilo. Pristop z gradientnim sestopom je počasen in je, že za srednje velike podatke, potrebno izvesti mnogo iteracij popravljanja vrednosti parametrov $\Theta$. Namesto te tehnike tipično uporabljamo optimizacijske tehnike, ki imajo hitrejšo konvergenco. Ena od teh je postopek L-BFGS, ki pa ga tipično uporabimo iz za to dostopne knjižnice. Na vhodu postopek L-BFGS potrebuje cenovno funkcijo (torej, $l(\Theta)$) in pa njen gradient, ki smo ga izračunali zgoraj (en.~\ref{eq:logreg-grad}).
+Tukaj velja opozorilo. Pristop z gradientnim sestopom je počasen in je, že za srednje velike podatke, potrebno izvesti mnogo iteracij popravljanja vrednosti parametrov $\theta$. Namesto te tehnike tipično uporabljamo optimizacijske tehnike, ki imajo hitrejšo konvergenco. Ena od teh je postopek L-BFGS, ki pa ga tipično uporabimo iz za to dostopne knjižnice. Na vhodu postopek L-BFGS potrebuje cenovno funkcijo (torej, $l(\theta)$) in pa njen gradient, ki smo ga izračunali zgoraj (en.~\ref{eq:logreg-grad}).
