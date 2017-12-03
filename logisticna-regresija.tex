@@ -106,7 +106,7 @@ Kot smo označili v zgornji funkciji $L$, je ta verjetnost odvisna od parametrov
 Funkcijo $L$ imenujemo {\em verjetje}. Iščemo torej parametre $\Theta$, kjer je njena vrednost največja. Tudi tokrat bomo tako vrednost parametrov iskali z gradientnimi pristopi, za te pa sedaj že vemo, da moramo znati izračunati odvode po posameznih parametrih, oziroma, da moramo znati izračunati gradient kriterijske funkcije. Ker je odvajanje funkcij z mnogo produkti, torej funkcij, kot je naša $L(\Theta)$, precej mučno, se vprašajmo, ali obstaja kakšna preslikava funkcije $L$, za katero bi bilo lažje izračunati odvod in pri kateri bi vrednosti $\Theta$, ki to funkcijo maksimizirajo prav tako maksimizirajo tudi funkcijo $L(\Theta)$. Taka preslikava je logaritemska funkcija, ki je na intervalu od 0 do $\infty$ monotona in bo torej vektor $\Theta$, ki maksimizira $\log(L(\Theta))$ torej tak, da maksimizira tudi $L(\Theta)$. Logaritem $L(\Theta)$ označimo kot $l(\Theta)$ in ga izračunamo kot:
 \begin{eqnarray}
   l(\Theta) & = & \log L(\Theta) \nonumber\\
-  & = & \sum_{i=1}^m\big[y^{(i)}\log h_\Theta(x^{(i)})^{y^{(i)}}+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})^{y^{(i)}}) \big]
+  & = & \sum_{i=1}^m\big[y^{(i)}\log h_\Theta(x^{(i)})+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})) \big]
 \end{eqnarray}
 
 Namesto kriterijske funkcije $L(\Theta)$ bomo torej uporabili funkcijo $l(\Theta)$, ki ji pravimo tudi {\em logaritem verjetja} (angl. {\em log likelihood}).
@@ -116,12 +116,13 @@ Namesto kriterijske funkcije $L(\Theta)$ bomo torej uporabili funkcijo $l(\Theta
 Iščemo torej tak $\Theta$, ki maksimizira logaritem verjetja $l(\Theta)$. Ker bomo uporabili gradientno metodo in ker je $\Theta$ vektor $[\theta_0 \theta_1 \ldots \theta_n]$, moramo izračunati parcialne odvode naše kriterijske funkcije:
 \begin{eqnarray}
   \frac{\partial}{\partial\theta_j}l(\Theta)
-  & = & \sum_{i=1}^m \big[y^{(i)}\log h_\Theta(x^{(i)})^{y^{(i)}}+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})^{y^{(i)}}) \big] \nonumber \\
-  & = & \sum_{i=1}^m \big[y^{(i)}\frac{1}{\Theta^T x^{(i)}}-(1-y^{(i)})\frac{1}{1-\Theta^T x^{(i)}} \big]\frac{\partial}{\partial\theta_j}g(\Theta^T x^{(i)}) \nonumber\\
-  & = & \sum_{i=1}^m \big[y^{(i)}\frac{1}{\Theta^T x^{(i)}}-(1-y^{(i)})\frac{1}{1-\Theta^T x^{(i)}} \big]\frac{\partial}{\partial\theta_j}g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)}))
+  & = & \sum_{i=1}^m \frac{\partial}{\partial\theta_j} \big[y^{(i)}\log h_\Theta(x^{(i)})+(1-y^{(i)})\log (1-h_\Theta(x^{(i)})) \big] \nonumber \\
+  & = & \sum_{i=1}^m \big[y^{(i)}\frac{1}{g(\Theta^T x^{(i)})}-(1-y^{(i)})\frac{1}{1-g(\Theta^T x^{(i)})} \big]\frac{\partial}{\partial\theta_j}g(\Theta^T x^{(i)}) \nonumber\\
+  & = & \sum_{i=1}^m \big[\frac{y^{(i)}}{g(\Theta^T x^{(i)})}-\frac{(1-y^{(i)})}{1-g(\Theta^T x^{(i)})} \big]g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)}))
   \frac{\partial}{\partial\theta_j}\Theta^T x^{(i)}\nonumber\\
-  & = & \sum_{i=1}^m (y^{(i)}-g(\Theta^T x^{(i)})x_j^{(i)}\nonumber\\
-  & = & \sum_{i=1}^m (y^{(i)}-h_\Theta(x^{(i)})x_j^{(i)}\nonumber
+  & = & \sum_{i=1}^m \big[\frac{y^{(i)} - g(\Theta^T x^{(i)})} {g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)}))} \big]g(\Theta^T x^{(i)})(1-g(\Theta^T x^{(i)})) x_j^{(i)}\nonumber\\
+  & = & \sum_{i=1}^m (y^{(i)}-g(\Theta^T x^{(i)}))x_j^{(i)}\nonumber\\
+  & = & \sum_{i=1}^m (y^{(i)}-h_\Theta(x^{(i)}))x_j^{(i)}\nonumber
   \label{eq:logreg-grad}
 \end{eqnarray}
 Zelo enostavno! Smo tak rezultat oziroma tako enačbo videli že kje prej? Seveda! Pri linearni regresiji. Parcialni odvodi so identična tem za linearno regresijo. Seveda z majhno razliko. Tokrat naša funkcija $h_\Theta$ uporablja logistično funkcijo (en.~\ref{eq:logreg}), pri linearni regresiji pa je bila $h_\Theta$ samo utežena vsota atributnih vrednosti.
