@@ -2,9 +2,9 @@
 
 Se bo osnovnošolec Vinko uvrstil v drugi krog tekmovanja iz kemije? Se bo po srednji šoli vpisal na Kemijsko fakulteto? Ga bo zaposlilo podjetje, ki se ukvarja z biofarmacijo? Bo njegov košarkaški klub Olimpija premagal Crveno zvezdo to soboto? Se bo poročil s sosedovo Niko? Bo njegova ideja o tekočini, ki vsakih 35 minut spremeni barvo, uspela na Kickstarterju?
 
-Morda smo s kakšnim od zgornjih vprašanj zašli, a na vsaj eno od naštetih vemo, da je nanj možno dovolj dobro odgovoriti. So pa to vprašanja, ki niso regresijska, oziroma je napoved kategorična tipa ``bo'' ali ``ne bo''. Še bolj natančno: za vsako od zgornjih vprašanj bi pravzaprav radi ocenili verjetnost, ali se bo nek dogodek zgodil. Recimo, zanima nas, s kakšno verjetnostjo se bo Vino poročil z Niko. In pa, s kakšno verjetnostjo se bo njegov kicksterski projekt uspel.
+Morda smo s kakšnim od zgornjih vprašanj zašli, a na vsaj eno od naštetih vemo, da je nanj možno dovolj dobro odgovoriti. So pa to vprašanja, ki niso regresijska, oziroma je napoved kategorična tipa ``bo'' ali ``ne bo''. Še bolj natančno: za vsako od zgornjih vprašanj bi pravzaprav radi ocenili verjetnost, ali se bo nek dogodek zgodil. Recimo, zanima nas, s kakšno verjetnostjo se bo Vinko poročil z Niko. In pa, s kakšno verjetnostjo bo njegov kicksterski projekt uspel.
 
-Seveda bomo tudi tokrat napovedne modele, tokrat klasifikacijske, gradili iz podatkov. Za silo bi take podatke in s tem problem spremenili v regresijskega tako, da bi odgovore označili z vrednostjo 0 (dogodek se ni zgodil) ali 1 (dogodek se je zgodil), potem pa to vrednost obravnavali kot zvezno vrednost odvisne spremenljivke oziroma razreda $y$. Primer take obravnave nam kaže tabela~\ref{f:temperatura} s podatki o obiskovalci ordinacije, ki jim je zdravnik zmeril telesno temperaturo in potem (na podlagi dodatnih preiskav, seveda, ki pa jih tu ne podajamo) določil zdravstveno stanje. Naš cilj je zgraditi model, ki zdravstveno stanje oceni (samo) na podlagi telesne temperature.
+Seveda bomo tudi tokrat napovedne modele, tokrat klasifikacijske, gradili iz podatkov. Za silo bi take podatke in s tem problem spremenili v regresijskega tako, da bi odgovore označili z vrednostjo 0 (dogodek se ni zgodil) ali 1 (dogodek se je zgodil), potem pa to vrednost obravnavali kot zvezno vrednost odvisne spremenljivke oziroma razreda $y$. Primer take obravnave nam kaže tabela~\ref{f:temperatura} s podatki o obiskovalcih ordinacije, ki jim je zdravnik zmeril telesno temperaturo in potem (na podlagi dodatnih preiskav, seveda, ki pa jih tu ne podajamo) določil zdravstveno stanje. Naš cilj je zgraditi model, ki zdravstveno stanje oceni (samo) na podlagi telesne temperature.
 
 \begin{table}[htbp]
 \caption{Telesna temperatura in stanje pregledovanca, ki smo ga zapisali v numerični obliki kot razred $y$.}
@@ -78,7 +78,7 @@ Model zaradi uporabe logistične funkcije imenujemo {\em logistična regresija}.
 
 \section{Računanje verjetnosti razreda}
 
-V nadaljevanju bomo torej logistično funkcijo uporabili tako, da nam bo naš model $h_{\theta}(0)$, ki je v osnovi linearni model, vračal vrednosti med 0 in 1. Še naprej bomo predpostavljali, da je naša razredna spremenljivka dvovrednostna, a privzeli, da je njena ciljna vrednost razred z oznako $y=1$ in da zanj model $h_{\theta}(x)$ vrača verjetnost tega razreda. K oznaki modela smo namenoma pripisali oznako za vektor parametrov $\theta$ in na ta način poudarili, da ti parametri tudi polno opredelijo naš model. Zapišemo torej lahko:
+V nadaljevanju bomo torej logistično funkcijo uporabili tako, da nam bo naš model $h_{\theta}(x)$, ki je v osnovi linearni model, vračal vrednosti med 0 in 1. Še naprej bomo predpostavljali, da je naša razredna spremenljivka dvovrednostna, a privzeli, da je njena ciljna vrednost razred z oznako $y=1$ in da zanj model $h_{\theta}(x)$ vrača verjetnost tega razreda. K oznaki modela smo namenoma pripisali oznako za vektor parametrov $\theta$ in na ta način poudarili, da ti parametri tudi polno opredelijo naš model. Zapišemo torej lahko:
 \begin{eqnarray}
   P(y=1|x;\theta) & = & h_\theta(x) \\
   P(y=0|x;\theta) & = & 1-h_\theta(x)
@@ -125,7 +125,7 @@ Iščemo torej tak $\theta$, ki maksimizira logaritem verjetja $l(\theta)$. Ker 
   & = & \sum_{i=1}^m (y^{(i)}-h_\theta(x^{(i)}))x_j^{(i)}\nonumber
   \label{eq:logreg-grad}
 \end{eqnarray}
-Zelo enostavno! Smo tak rezultat oziroma tako enačbo videli že kje prej? Seveda! Pri linearni regresiji. Parcialni odvodi so identična tem za linearno regresijo. Seveda z majhno razliko. Tokrat naša funkcija $h_\theta$ uporablja logistično funkcijo (en.~\ref{eq:logreg}), pri linearni regresiji pa je bila $h_\theta$ samo utežena vsota atributnih vrednosti.
+Zelo enostavno! Smo tak rezultat oziroma tako enačbo videli že kje prej? Seveda! Pri linearni regresiji. Parcialni odvodi so identični tem za linearno regresijo. Seveda z majhno razliko. Tokrat naša funkcija $h_\theta$ uporablja logistično funkcijo (en.~\ref{eq:logreg}), pri linearni regresiji pa je bila $h_\theta$ samo utežena vsota atributnih vrednosti.
 
 \section{Optimizacija parametrov modela}
 
