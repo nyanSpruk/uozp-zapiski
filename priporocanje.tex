@@ -230,13 +230,19 @@ Z matrikami P in Q lahko izračunamo približek ocene za stvar $i$ uporabnika $u
   \hat{r_{ui}}={\bf p}_u^T {\bf q}_i = \sum_{k=1}^K p_{uk} q_{ki}
 \end{equation}
 
-Za ocene iz učne množice $r_{ui}$ bi želeli, da je ta približek čim boljši, oziroma da je napaka, ki jo s tem približkom naredimo, čim manjša. Izračunajmo kvadrat napake za oceno stvari $i$ uporabnika $u$ in ga pomnožimo z $1\over 2$, da se nam kasneje pokrajša dvojka pri odvajanju:
+Za ocene iz učne množice $r_{ui}$ bi želeli, da je ta približek čim boljši, oziroma da je napaka, ki jo s tem približkom naredimo, čim manjša. Izračunajmo kvadrat napake za oceno stvari $i$ uporabnika $u$:
 %
 \begin{equation}\label{eq:fact-error}
-  e_{ui}^2 = {1\over 2}(r_{ui}-\hat{r}_{ui})^2
+  e_{ui}^2 = (r_{ui}-\hat{r}_{ui})^2
 \end{equation}
 %
-Želeli bi poiskati taki matriki $P$ in $Q$, kjer so te napake čim manjše. Ker bomo pri numeričnem iskanju teh matrik v vsaki iteraciji obravnavali natančno enega med učnimi primeri (torej $r_{ui}$ za določen par $(u,i)\in\tau$), potrebujemo izračunati gradient napake za vsakega od parametrov modela. Naš model sta matriki P in Q, vrednosti parametrov modela pa vsi njuni elementi $p_{uk}$ in $q_{ki}$. V enačbo za napako (enačba~\ref{eq:fact-error}) vstavimo izraz iz enačbe~\ref{eq:rui-latent} in odvajajmo:
+Želeli bi poiskati taki matriki $P$ in $Q$, kjer so te napake čim manjše. Ker bomo pri numeričnem iskanju teh matrik v vsaki iteraciji obravnavali natančno enega med učnimi primeri (torej $r_{ui}$ za določen par $(u,i)\in\tau$), potrebujemo izračunati gradient napake za vsakega od parametrov modela. Naš model sta matriki P in Q, vrednosti parametrov modela pa vsi njuni elementi $p_{uk}$ in $q_{ki}$. V enačbo za napako (enačba~\ref{eq:fact-error}) vstavimo izraz iz enačbe~\ref{eq:rui-latent}:
+%
+\begin{equation}
+  e_{ui}^2 = \frac{1}{2}\left(r_{ui}-\sum_{k=1}^K p_{uk} q_{ki}\right)^2.
+\end{equation}
+%
+Enačbo smo pomnožili z $\frac{1}{2}$ tako, da se nam dvojka kasneje pri odvajajnju pokrajša. Odvod enačbe je seledeč:
 %
 \begin{eqnarray}
   \frac{\partial e_{ui}^2}{\partial p_{uk}} & = & -e_{ui}q_{ki} \\
