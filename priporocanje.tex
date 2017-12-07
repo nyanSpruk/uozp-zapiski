@@ -215,19 +215,19 @@ Matrika $\rm P$ je matrika uporabniških profilov v latentnem prostoru filmov, t
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=7cm]{slike/latentni-faktorji.pdf}
-\caption{Predstavitev uporabnika $u$ z latetnim profilom ${\bf p}_u$ in stvari $i$ z latentnim profilom ${\bf q}_i$. Skalarni produkt latentnih profilov nam da približek za oceno stvari $i$ uporabnika $u$, torej $\hat{r_{ui}}={\bf p}_u^T {\bf q}_i$.}
+\caption{Predstavitev uporabnika $u$ z latetnim profilom ${\bf p}_u$ in stvari $i$ z latentnim profilom ${\bf q}_i$. Skalarni produkt latentnih profilov nam da približek za oceno stvari $i$ uporabnika $u$, torej $\hat{r}_{ui}={\bf p}_u^T {\bf q}_i$.}
 \label{f:latentni-faktorji}
 \end{center}
 \end{figure}
 
-Razcep matrike R na matriki P in Q bomo poiskali tako, da bosta matriki P in Q polni, torej, da bodo vse vrednosti teh dveh matrik določene. Prav zato bomo lahko s produktom latentnih profilov lahko poiskali vrednost $\hat{r_{ui}}$ za vsako kombinacijo uporabnika $u$ in stvari $i$. Ostane nam torej le še, da izračunamo razcep, oziroma določimo matriki P in Q.
+Razcep matrike R na matriki P in Q bomo poiskali tako, da bosta matriki P in Q polni, torej, da bodo vse vrednosti teh dveh matrik določene. Prav zato bomo lahko s produktom latentnih profilov lahko poiskali vrednost $\hat{r}_{ui}$ za vsako kombinacijo uporabnika $u$ in stvari $i$. Ostane nam torej le še, da izračunamo razcep, oziroma določimo matriki P in Q.
 
 \subsection{Matrični razcep}
 
 Z matrikami P in Q lahko izračunamo približek ocene za stvar $i$ uporabnika $u$, ki je:
 %
 \begin{equation}\label{eq:rui-latent}
-  \hat{r_{ui}}={\bf p}_u^T {\bf q}_i = \sum_{k=1}^K p_{uk} q_{ki}
+  \hat{r}_{ui}={\bf p}_u^T {\bf q}_i = \sum_{k=1}^K p_{uk} q_{ki}
 \end{equation}
 
 Za ocene iz učne množice $r_{ui}$ bi želeli, da je ta približek čim boljši, oziroma da je napaka, ki jo s tem približkom naredimo, čim manjša. Izračunajmo kvadrat napake za oceno stvari $i$ uporabnika $u$:
