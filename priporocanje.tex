@@ -215,7 +215,7 @@ Matrika $\rm P$ je matrika uporabniških profilov v latentnem prostoru filmov, t
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=7cm]{slike/latentni-faktorji.pdf}
-\caption{Predstavitev uporabnika $u$ z latetnim profilom ${\bf p}_u$ in stvari $i$ z latentnim profilom ${\bf q}_i$. Skalarni produkt latentnih profilov nam da približek za oceno stvari $i$ uporabnika $u$, torej $\hat{r_{ui}}={\bf p}_u {\bf q}_i$.}
+\caption{Predstavitev uporabnika $u$ z latetnim profilom ${\bf p}_u$ in stvari $i$ z latentnim profilom ${\bf q}_i$. Skalarni produkt latentnih profilov nam da približek za oceno stvari $i$ uporabnika $u$, torej $\hat{r_{ui}}={\bf p}_u^T {\bf q}_i$.}
 \label{f:latentni-faktorji}
 \end{center}
 \end{figure}
@@ -227,7 +227,7 @@ Razcep matrike R na matriki P in Q bomo poiskali tako, da bosta matriki P in Q p
 Z matrikami P in Q lahko izračunamo približek ocene za stvar $i$ uporabnika $u$, ki je:
 %
 \begin{equation}\label{eq:rui-latent}
-  \hat{r_{ui}}={\bf p}_u {\bf q}_i = \sum_{k=1}^K p_{uk} q_{ki}
+  \hat{r_{ui}}={\bf p}_u^T {\bf q}_i = \sum_{k=1}^K p_{uk} q_{ki}
 \end{equation}
 
 Za ocene iz učne množice $r_{ui}$ bi želeli, da je ta približek čim boljši, oziroma da je napaka, ki jo s tem približkom naredimo, čim manjša. Izračunajmo kvadrat napake za oceno stvari $i$ uporabnika $u$ in ga pomnožimo z $1\over 2$, da se nam kasneje pokrajša dvojka pri odvajanju:
@@ -264,7 +264,7 @@ Postopek iskanja razcepa matrike R na matriki P in Q, kot smo ga opisali zgoraj,
 Zgoraj opisan matrični razcep se lahko preveč prilagodi učnim podatkom, še posebej pri večjih vrednostih $K$. Tudi tu se preveliko prileganje odrazi v velikih vrednostih parametrov modela, torej velikih vrednostih elementov matrik P in Q. Preveliko prileganje preprečimo tako, da v našo ciljno funkcijo vključimo kaznovanje, ki izhaja iz velikosti parametrov:
 
 \begin{equation}
-{e'_{ui}}^2 = {1\over 2}(e_{ui}^2 + \eta {\bf p}_u {\bf p}_u^T + \eta {\bf q}_i {\bf q}_i^T)
+{e'_{ui}}^2 = {1\over 2}(e_{ui}^2 + \eta {\bf p}_u^T {\bf p}_u + \eta {\bf q}_i^T {\bf q}_i)
 \end{equation}
 
 Gradient, ki ga uporabimo pri metodi sestopa, dobimo s parcialnim odvajanjem zgornje kriterijske funkcije:
