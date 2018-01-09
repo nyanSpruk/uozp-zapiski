@@ -9,8 +9,9 @@ chapters = (
     ("logisticna-regresija", 55),
     ("klasifikacijska-drevesa-in-gozdovi", 61),
     ("priporocanje", 71),
-    ("povezovalna-pravila", 83),
-    ("END", 90)
+    ("projekcije", 83),
+    ("povezovalna-pravila", 95),
+    ("END", 101)
 )
 
 
