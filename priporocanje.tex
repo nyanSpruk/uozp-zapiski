@@ -25,7 +25,7 @@ V nadaljevanju spregovorimo torej samo o tehnikah skupinskega filtriranja. Pripo
 
 \section{Podatki}
 
-Naš cilj je razviti priporočilni sistem za skupino uporabnikov $\mathcal{U}$, ki lahko izbirajo med množico stvari $\mathcal{I}$, kjer bomo imeli $N$ različnih uporabnikov ($|\mathcal{U}|=N$) in $M$ različnih stvari ($\mathcal{I}=M$). Preferenčno znanje $\mathcal{R}$ bomo zapisali kot množico trojk $(u,i,r)$ za uporabnika $u\in\mathcal{U}$, stvar $i\in\mathcal{I}$ in preferenco $r$, ki bo podala ocena oziroma zaželenosti stvari $i$ s strani uporabnika $u$.
+Naš cilj je razviti priporočilni sistem za skupino uporabnikov $\mathcal{U}$, ki lahko izbirajo med množico stvari $\mathcal{I}$, kjer bomo imeli $N$ različnih uporabnikov ($|\mathcal{U}|=N$) in $M$ različnih stvari ($\mathcal{I}=M$). Preferenčno znanje $\mathcal{R}$ bomo zapisali kot množico trojk $(u,i,r)$ za uporabnika $u\in\mathcal{U}$, stvar $i\in\mathcal{I}$ in preferenco $r$, ki bo podala oceno oziroma zaželenosti stvari $i$ s strani uporabnika $u$.
 
 Preference merimo v neki izbrani merski lestvici. Na primer, ocene zapišemo s celimi števili od 1 do 5, ali pa od 0 do 10, ali pa z realnimi števili od 0.0 do 1.0 ali pa od -1.0 do 1.0. Včasih pa imamo na voljo samo oznake, ali je uporabnik za določeno stvar izrazil zanimanje. Slednji primer je težji, saj nimamo urejenih ocen oziroma imamo samo označene pozitivne preference. Predpostavka, da so vse stvari, ki jih uporabnik ni označil, zanj nezanimive, pa je lahko napačna. V tem poglavju se bomo predvsem ukvarjali s podatki, kjer imamo na voljo numerične ocene, tu in tam pa bomo namignili, kako bi lahko obravnavali podatki, ki vsebujejo samo seznam zanimivih stvari, za katere uporabnik ni podal preferenčne ocene v neki numerični lestvici.
 
@@ -129,7 +129,7 @@ kjer smo, na primer, z $||{\bf r}_u\cap{\bf r}_{u'}||$ označili število stvari
 
 Za danega uporabnika $u$ želimo z uporabo učnih podatkov oceniti, kakšna je njegova preferenčna ocena za stvar $i$. To označimo z $\hat{r}_{ui}$, saj gre za oceno oziroma približek. Preferenčno oceno lahko na ta način pridobimo tudi za že obstoječo oceno iz učne množice, a bo ta verjetno različna od ocene $r_{ui}$, ki jo je podal uporabnik in bomo pri njeni napovedi storili določeno napako.
 
-Izhodišče za izračun preference $\hat{r}_{ui}$, torej ocene koristnosti stvari $i$ za uporabnika $u$ so podobnosti med uporabniki. Ideja pa je enostavna: pogledamo, kdo so vsi uporabniki, ki so ocenili stvar $i$. Njihove ocene utežimo s podobnostjo s ciljnim uporabnikom $u$ ter dobljeno vsoto normirano z vsoto uteži:
+Izhodišče za izračun preference $\hat{r}_{ui}$, torej ocene koristnosti stvari $i$ za uporabnika $u$, so podobnosti med uporabniki. Ideja pa je enostavna: pogledamo, kdo so vsi uporabniki, ki so ocenili stvar $i$. Njihove ocene utežimo s podobnostjo s ciljnim uporabnikom $u$ ter dobljeno vsoto normiramo z vsoto uteži:
 
 \begin{equation}
 \hat{r}_{ui} = \frac{\displaystyle\sum_{u':(u',i)\in\tau,\ u'\neq u}s(u,

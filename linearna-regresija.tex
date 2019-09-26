@@ -291,7 +291,7 @@ funkcijo iz enačbe~\ref{eq:jab}, njena odvoda po parametrih $a$ in $b$ sta:
 Pri odvajanju smo izgubili konstanto $2$ v imenovalcu
 normalizacijskega člena $1\over 2m$. Omenimo samo, da bi lahko odvoda
 zložili v vektor in s tem dobili nekaj, čemur pravimo gradient. Ne se
-ustrašit, gradient je čisto preprosta zadeva: funkcijo z več parametri
+ustrašiti, gradient je čisto preprosta zadeva: funkcijo z več parametri
 smo vsakič odvajali po posameznem parametru, in s tem dobili vektor,
 ki ga imenujemo gradient funkcije.
 
@@ -398,7 +398,7 @@ podatkom:
 \end{equation}
 
 Na podlagi zgornjega kriterija zapišimo kriterijsko funkcijo. Kriterij
-pomnožimo z $1\over 2$, da nam bo lažje kasneje pri izpeljavi odvodov, ter z $1/m$ da vrednost kriterijske funkcija ne bo odvisna od števila primerov:
+pomnožimo z $1\over 2$, da nam bo lažje kasneje pri izpeljavi odvodov, ter z $1/m$ da vrednost kriterijske funkcije ne bo odvisna od števila primerov:
 %
 \begin{equation}
 J(\theta)={1\over 2m}\sum_{i=0}^m(h_\theta(x^{(i)})-y^{(i)})^2
@@ -444,4 +444,4 @@ oziroma za vse primere:
   \theta_i\leftarrow\theta_i-{\alpha\over m}\sum_{j=1}^m(h_\theta(x^{(j)})-y^{(j)})x_i^{(j)}
 \end{equation}
 
-Pri linearni regresiji oziroma zgoraj opisanemu pristopu najmanjših kvadratov je $J(\theta)$ kvadratna funkcija z enim samim minimumom, zato se nam o tem, da bi se optimizacija zaustavila v nekem lokalnem minimumu ni potrebno bati. Lahko pa, kot smo že zapisali zgoraj, pri velikih vrednostih $\alpha$ minimum zgrešimo in se pričnemo vse bolj oddaljevati od njega. Pomaga seveda zmanjšanje $\alpha$ na vrednost, pri kateri je optimizacija stabilne in skonvergira k pravi vrednosti parametrov $\theta$.
+Pri linearni regresiji oziroma zgoraj opisanemu pristopu najmanjših kvadratov je $J(\theta)$ kvadratna funkcija z enim samim minimumom, zato se nam o tem, da bi se optimizacija zaustavila v nekem lokalnem minimumu ni potrebno bati. Lahko pa, kot smo že zapisali zgoraj, pri velikih vrednostih $\alpha$ minimum zgrešimo in se pričnemo vse bolj oddaljevati od njega. Pomaga seveda zmanjšanje $\alpha$ na vrednost, pri kateri je optimizacija stabilna in skonvergira k pravi vrednosti parametrov $\theta$.
