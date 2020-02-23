@@ -5,7 +5,7 @@ Velika prednost metode hierarhičnega gručenja, ki smo jo spoznali v prejšnjem
 A pri tem naletimo na največjo pomankljivost hierarhičnega gručenja: metoda deluje samo na relativno majhnih množicah podatkov. Če imamo podatkov veliko, recimo nekaj deset tisoč ali pa celo milijon, hierarhično gručenje zaradi časovne in prostorske kompleksnosti odpove, dendrogram pa postane prevelik in neuporaben.
 
 Rešitev, ki dobro deluje na velikih množicah podatkov je postopek, ki ga imenujemo metoda voditeljev \angl{$K$-means}. Seveda zastonj kosila tudi tu ni. V svoji
-osnovni inačici metoda voditeljev predpostavlja, da je uporabnik v naprej določil število skupin,
+osnovni inačici metoda voditeljev predpostavlja, da je uporabnik vnaprej določil število skupin,
 na katero želi razbiti učno množico primerov. Algoritem uporablja
 t.im. voditelje oziroma primere, ki določajo te skupine oziroma so
 središča skupin. Postopek iskanja optimalnega razbitja je potem
@@ -220,7 +220,7 @@ in kakšne so skupne značilnosti primerov v skupinah.
 je lahko tako. Različni algoritmi, njihovi parametri ali pa rahlo
 različne učne množice iz iste problemske domene nam lahko pomagajo
 razkriti skupine, ki so lahko rahlo, ali pa tudi precej različne med
-sabo. Bi bilo pametno, pri takem nizu razvrstitev, te skupine nekako
+sabo. Pri takem nizu razvrstitev bi bilo pametno te skupine nekako
 zliti in poiskati stabilni del razvrstitev. Če bi na primer dva
 primera pri večini razvrstitev bila del istih skupin bi to bil dober
 pokazatelj, da bi bilo dobro ta dva primera tudi sicer razvrstiti

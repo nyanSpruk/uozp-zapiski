@@ -2,7 +2,7 @@
 
 Se bo osnovnošolec Vinko uvrstil v drugi krog tekmovanja iz kemije? Se bo po srednji šoli vpisal na Kemijsko fakulteto? Ga bo zaposlilo podjetje, ki se ukvarja z biofarmacijo? Bo njegov košarkaški klub Olimpija premagal Crveno zvezdo to soboto? Se bo poročil s sosedovo Niko? Bo njegova ideja o tekočini, ki vsakih 35 minut spremeni barvo, uspela na Kickstarterju?
 
-Morda smo s kakšnim od zgornjih vprašanj zašli, a na vsaj eno od naštetih vemo, da je nanj možno dovolj dobro odgovoriti. So pa to vprašanja, ki niso regresijska, oziroma je napoved kategoričnega tipa ``bo'' ali ``ne bo''. Še bolj natančno: za vsako od zgornjih vprašanj bi pravzaprav radi ocenili verjetnost, ali se bo nek dogodek zgodil. Recimo, zanima nas, s kakšno verjetnostjo se bo Vino poročil z Niko. In pa, s kakšno verjetnostjo bo njegov kicksterski projekt uspel.
+Morda smo s kakšnim od zgornjih vprašanj zašli, a na vsaj eno od naštetih vemo, da je nanj možno dovolj dobro odgovoriti. So pa to vprašanja, ki niso regresijska, oziroma je napoved kategoričnega tipa ``bo'' ali ``ne bo''. Še bolj natančno: za vsako od zgornjih vprašanj bi pravzaprav radi ocenili verjetnost, ali se bo nek dogodek zgodil. Recimo, zanima nas, s kakšno verjetnostjo se bo Vinko poročil z Niko. In pa, s kakšno verjetnostjo bo njegov kicksterski projekt uspel.
 
 Seveda bomo tudi tokrat napovedne modele, sedaj klasifikacijske, gradili iz podatkov. Za silo bi take podatke in s tem problem spremenili v regresijskega tako, da bi odgovore označili z vrednostjo 0 (dogodek se ni zgodil) ali 1 (dogodek se je zgodil), potem pa to vrednost obravnavali kot zvezno vrednost odvisne spremenljivke oziroma razreda $y$. Primer take obravnave nam kaže tabela~\ref{f:temperatura} s podatki o obiskovalcih ordinacije, ki jim je zdravnik izmeril telesno temperaturo in potem (seveda na podlagi dodatnih preiskav, ki pa jih tu ne podajamo) določil zdravstveno stanje. Naš cilj je zgraditi model, ki zdravstveno stanje oceni (samo) na podlagi telesne temperature.
 
@@ -40,7 +40,7 @@ Podatke predstavimo grafično (slika~\ref{f:class-linreg}) in si potem nanje drz
 
 \section{Logistična funkcija}
 
-Funkcija, ki jo bomo uporabili in ki neko realno število pretvori v število na intervalu [-1, 1], je logistična funkcija (slika~\ref{f:logistic-function}):
+Funkcija, ki jo bomo uporabili in ki neko realno število pretvori v število na intervalu [0, 1], je logistična funkcija (slika~\ref{f:logistic-function}):
 \begin{equation}
   g(z) = {1\over 1+e^{-z}}
 \end{equation}

@@ -39,7 +39,7 @@ Pravimo, da smo prostor atributov razširili s potenčnimi vrednostmi. Ker bomo 
 \end{center}
 \end{figure}
 
-Z dviganjem stopnje polinoma se naš model čedalje bolj prilega učnim podatkom, napovedna napaka oziroma naše kriterijska funkcija pa je čedalje manjša. S polinomsko razširitvijo sedmega reda smo dosegli skoraj popolno prileganje (slika~\ref{fig:poly-linear-fit7}). Vrednost naše kriterijske funkcije gre z dvigovanjem stopnje polinoma proti nič in je dejansko enaka nič takrat, ko je stopnja polinoma oziroma razširitve atributnega prostora enaka $m-1$, kjer je $m$ število primerov.
+Z dviganjem stopnje polinoma se naš model čedalje bolj prilega učnim podatkom, napovedna napaka oziroma naša kriterijska funkcija pa je čedalje manjša. S polinomsko razširitvijo sedmega reda smo dosegli skoraj popolno prileganje (slika~\ref{fig:poly-linear-fit7}). Vrednost naše kriterijske funkcije gre z dvigovanjem stopnje polinoma proti nič in je dejansko enaka nič takrat, ko je stopnja polinoma oziroma razširitve atributnega prostora enaka $m-1$, kjer je $m$ število primerov.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -112,7 +112,7 @@ Rezultate kaže tabela~\ref{tab:poly-reg-many-res}. S stopnjo polinomske razšir
 Ko višamo stopnjo polinomske razširitve atributnega prostora smo opazili (slika~\ref{fig:poly-linear-fit7}), da parametri modela podivjajo, oziroma postane njihova vrednost zelo visoka. Kar ni nič čudnega, saj se model zelo prilagodi učnim podatkom, funkcija odvisnosti med $x$ in $y$ je zelo razgibana, njeni odvodi pa zelo visoki. Prileganje učni množici se torej izrazi v absolutno velikih vrednostih parametrov modela (absolutno zato, ker so te vrednosti lahko visoke a negativne ali visoke in pozitivne). Želeli bi si manj ``divje'' modele, torej take, kjer bi bili parametri modela po absolutni meri manjši. To željo enostavno izrazimo kot dodatek h kriterijiski funkciji za linearno regresijo:
 
 \begin{equation}
-J = {1\over 2m}\sum_{i=1}^m (f(y^{(i)})-y^{(i)})^2 + \eta\sum_{j=1}^n \theta_j^2
+J = {1\over 2m}\sum_{i=1}^m (f(x^{(i)})-y^{(i)})^2 + \eta\sum_{j=1}^n \theta_j^2
 \end{equation}
 
 Prvi člen v zgornji enačbi je cenovna funkcija za linearno regresijo, kjer želimo, da se model čimbolj prilega učni množici. Drugi člen pa pravi, da naj bo kvadratna vrednost parametrov takega modela čim manjša. Uporabili smo kvadratno vrednost parametrov, saj nam je vseeno, ali je njihova vrednost pozitivna ali negativna. Pravimo, da smo cenovno funkcijo regularizirali, stopnjo regularizacije pa uravnavamo z vrednostjo $\eta$, katere tipične vrednosti so nizke, recimo 0.1 ali pa 0.01 ali pa celo 0.0001.
@@ -120,7 +120,7 @@ Prvi člen v zgornji enačbi je cenovna funkcija za linearno regresijo, kjer že
 Za učenje modela linearne regresije, torej, za določanje vrednosti parametrov $\theta_i$ modela iz podatkov rabimo še izračunati gradient. Izračun je enostaven, saj je enak, kot pri neregularizirani linearni regresiji plus odvod člena za regularizacijo (spodnja enačba velja za $i=1\ldots n$, za $i=0$ pa ostane odvod enak kot prej):
 
 \begin{equation}
-{\partial\over\partial\theta_i} J(\theta) = {1\over m}(h_\theta(x)-y)x_i + \eta\theta_i
+{\partial\over\partial\theta_i} J(\theta) = {1\over m}(h_\theta(x)-y)x_i + 2\eta\theta_i
 \end{equation}
 
 Ostane le še preskus: ali se, tudi z regularizacijo, lahko preveč prilagodimo manjšemu naboru podatkov v učni množici. Seveda je vse odvisno od stopnje regularizacije $\eta$, a v splošnem (pri primerni vrednosti parametra $\eta$) je odgovor ne. Regularizacija nam pomaga pri preprečevanju prevelikega prileganja. Naj sliki~\ref{fig:poly-reg-compare} je tako primer podatkov in polinomske regresije brez regularizacije in z regularizacijo.
