@@ -59,7 +59,7 @@ Imejmo testno množico $\cal{T}$ s $k$ primeri, $k=|\cal{T}|$, za katere poznamo
 
 Pri prvi meri za napovedno točnost, ki jo bomo tu uvedli, sledimo dosedanji logiki, da nas predznak napake ne zanima (torej kvadriramo) in da bi radi izračunali povprečno vrednost take, kvadrirane napake. Ker bi želeli, da se napaka izrazi v istih enotah kot vrednosti razreda v učni množici, povprečno kvadrirano napako na koncu še korenimo. Dobimo koren povprečne kvadrirane napake \angl{Root Mean Squared Error}):
 
-$$ {\rm RMSE}(\cal{T})=\sqrt{\sum_{i=1}^k{y^{(i)}-\hat{y}^{(i)}}\over k} $$
+$$ {\rm RMSE}(\cal{T})=\sqrt{\sum_{i=1}^k{(y^{(i)}-\hat{y}^{(i)})^2}\over k} $$
 
 Mera RMSE je sicer čisto v redu, a je njena vrednost odvisna od domene odvisne spremenljivke. Na primer, če je ${\rm RMSE}=42.0$ s tem pravzaprav nismo povedali ničesar, saj ne poznamo razpon odvisne spremenljvike. Če smo s tem ocenili težo tovornjakov v tonah, je napaka ogromna, če pa smo njegovo težo ocenjevali v kilogramih, je skoraj zanemarljiva. Bolje bi bilo imeti oceno napake, kjer je ta neodvisna od domene odvisne spremenljivke. Recimo, nekaj, čemur statistiki pravijo delež razložene variance:
 
