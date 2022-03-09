@@ -1,3 +1,6 @@
+.DS_Store
+copy-pdfs
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -10,6 +13,9 @@
 *.fot
 *.cb
 *.cb2
+
+pdfs
+zapiski.pdf
 
 ## Intermediate documents:
 *.dvi

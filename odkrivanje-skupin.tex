@@ -193,14 +193,14 @@ $$d_{\rm min}(C_u, C_v)=\min_{a,b}\{d(a,b)\ |\ a\in C_u, b\in C_v\}$$
 $$d_{\rm max}(C_u, C_v)=\max_{a,b}\{d(a,b)\ |\ a\in C_u, b\in C_v\}$$
 \item Razdalja med skupinama $C_u$ in $C_v$ je povprečna razdalja med
   vsemi pari primerov iz teh dveh skupin \angl{average linkage}, torej:
-$$d(C_u, C_v)={\sum_{a\in C_u}\sum_{b\in C_v}  \frac{d(a,b)}{|C_a||C_b|}} $$
+$$d(C_u, C_v)={\sum_{a\in C_u}\sum_{b\in C_v}  \frac{d(a,b)}{|C_u||C_v|}} $$
 \item Wardova razdalja, ki privzame, da je za vsako skupino $C$ znan
   njen centroid $R$ oziroma točka v središču skupine. Naj bo $R_u$
   centroid skupine $C_u$, $R_v$
   centroid skupine $C_v$, $R_{uv}$ pa centroid združene skupine
   $C_{uv}=C_u\cup C_v$. Potem je Wardova razdalja določena kot:
 $$d_w(C_u, C_v)=\sum_{x\in C_{uv}}d(x, R_{uv})^2 - (\sum_{x\in
-    C_u}d(x, R_u)^2 + \sum_{x\in C_v}d(a, R_v)^2)$$
+    C_u}d(x, R_u)^2 + \sum_{x\in C_v}d(x, R_v)^2)$$
 \end{itemize}
 
 \section{Hierarhično razvrščanje v skupine}
