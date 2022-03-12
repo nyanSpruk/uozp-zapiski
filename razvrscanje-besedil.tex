@@ -8,8 +8,9 @@ prostoru. Podatke smo morali predobdelati in vsakega od
 atributov normalizirati, drugih, bolj kompleksnih priprav podatkov pa
 postopki razvrščanja niso zahtevali.
 
-Drugače je s tekstovnimi dokumenti, ali besedili. Vzemimo na
-primer, da moramo v skupine urediti naslednje tri novice:
+Drugače je na primer s tekstovnimi dokumenti, ali besedili. V tem poglavju bomo spoznali enostavno tehniko, ki nam tekstovne dokumente predstavi z vektorji pojavitve izbranih znakovnih nizov. Tu moramo opozoriti, da je besedilo tega poglavja enostavno in se ukvarja s tehnikami, ki so bile prevladujoče pred uporabo globokih mrež. S slednjimi se tu (še) ne bomo srečali, saj osnov zanje še nismo spoznali. Cilj nam je le spoznati možno pot do vektorske predstavitve besedil, nad katerimi lahko potem računami razdalje in podobnosti in jih uporabimo podobno kot v prejšnjih poglavjih.
+
+Vzemimo, na primer, da moramo v skupine urediti naslednje tri novice:
 
 {\small
 \begin{quotation}
@@ -95,7 +96,7 @@ naključnem izboru besede iz dokumenta izbrali določeno besedo.
 
 \iffalse
 Primer predobdelave besedila v programskem jeziku Python s knjižnico
-iz paketa Orange je podan spodaj. Koda odstrani nepomembne besede,
+iz paketa Orange2 je podan spodaj. Koda odstrani nepomembne besede,
 ustvari seznam besed ter besedam iz tega seznama poišče leme.
 
 \begin{python}
