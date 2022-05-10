@@ -6,7 +6,7 @@ from sklearn.linear_model import Ridge, Lasso, LinearRegression
 from sklearn.metrics import r2_score
 
 # load the data, prepare it for sklearn
-data = pd.read_excel("data/bodyfat.xlsx")
+data = pd.read_excel("bodyfat.xlsx")
 m = data.to_numpy()
 X, y = m[:, 1:], m[:, 0]
 
